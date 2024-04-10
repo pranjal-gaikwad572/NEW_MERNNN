@@ -76,33 +76,37 @@ const Product = () => {
     <div  className="container px-5 py-24 mx-auto">
       <div  className="lg:w-4/5 mx-auto flex flex-wrap">
         <div  className="lg:w-1/2 w-full lg:pr-10 lg:py-6 mb-6 lg:mb-0">
-          <h2  className="text-sm title-font text-gray-500 tracking-widest uppercase">{product?.category}</h2>
+          <h2  className="text-sm title-font text-yellow-900 font-bold tracking-widest uppercase">{product?.category}</h2>
           <h1  className="text-gray-900 text-3xl title-font font-medium mb-4">{product?.title}</h1>
           <div  className="flex mb-4">
-            <a  className="flex-grow text-indigo-500 border-b-2 border-indigo-500 py-2 text-lg px-1">Description</a>
-            <a  className="flex-grow border-b-2 border-gray-300 py-2 text-lg px-1">Reviews</a>
-            <a  className="flex-grow border-b-2 border-gray-300 py-2 text-lg px-1">Details</a>
+            <a  className="flex-grow text-yellow-900 text-lg font-bold border-b-2 border-black py-2 px-1">Description</a>
+            {/* <a  className="flex-grow border-b-2 border-gray-300 py-2 text-lg px-1">Reviews</a>
+            <a  className="flex-grow border-b-2 border-gray-300 py-2 text-lg px-1">Details</a> */}
           </div>
-          <p  className="leading-relaxed mb-4">{product?.description}</p>
-          <div  className="flex border-t border-gray-200 py-2">
-            <span  className="text-gray-500">Color</span>
+          <p  className="leading-relaxed mb-4 text-white">{product?.description}</p>
+          <div  className="flex border-t border-black py-2">
+            <span  className="text-black">Color</span>
             <span  className="ml-auto text-gray-900">Blue</span>
           </div>
-          <div  className="flex border-t border-gray-200 py-2">
-            <span  className="text-gray-500">Size</span>
+          <div  className="flex border-t border-black py-2">
+            <span  className="text-black">Size</span>
             <span  className="ml-auto text-gray-900">Medium</span>
           </div>
-          <div  className="flex border-t border-b mb-6 border-gray-200 py-2">
-            <span  className="text-gray-500">Quantity</span>
-            <span  className="ml-auto text-gray-900">4</span>
-          </div>
+         
+         <br/>
+      
+          {/* <div  className="flex border-t border-b mb-6 border-black py-2"> */}
+            {/* <span  className="text-black">Quantity</span>
+            <span  className="ml-auto text-gray-900">4</span> */}
+          {/* </div> */}
+
           <div  className="flex">
-            <span  className="title-font font-medium text-2xl text-gray-900 mr-2">${product?.price}</span>
+            <span  className="title-font font-medium text-2xl text-green-800 mr-2">${product?.price}</span>
             
 
             <div className='flex justify-between items-center'>
-            <button  className="flex ml-auto text-black bg-yellow-500 border-0 py-2 px-6 focus:outline-none hover:bg-yellow-600 rounded mr-2" onClick={() => handleCart(product, true)}>Buy it Now</button>
-            <button  className="flex ml-auto text-black bg-yellow-500 border-0 py-2 px-6 focus:outline-none hover:bg-yellow-600 rounded" onClick={() => handleCart(product)}>Add to Cart</button>
+            {/* <button  className="flex ml-auto border-0 py-2 px-6 focus:outline-none text-white  bg-yellow-500 hover:bg-yellow-600 hover:text-black rounded mr-2" onClick={() => handleCart(product, true)}>Buy it Now</button> */}
+            <button  className="flex ml-auto border-0 py-2 px-6 focus:outline-none bg-green-800 hover:bg-green-800 text-white hover:text-black rounded" onClick={() => handleCart(product)}>Add to Cart</button>
             </div>
            
             <button  className="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
