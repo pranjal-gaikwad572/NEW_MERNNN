@@ -23,7 +23,7 @@ const navigations = [
 ];
 
 const Header = () => {
-  const { loginWithRedirect, logout, isAuthenticated, user } = useAuth0();
+  // const { loginWithRedirect, logout, isAuthenticated, user } = useAuth0();
 
   return (
     <header className="text-gray-600 body-font shadow-lg">
@@ -65,7 +65,7 @@ const Header = () => {
           <NavLink className="mr-5 hover:text-gray-900">Footer</NavLink> */}
         </nav>
 
-        {isAuthenticated ? (
+        {/* {isAuthenticated ? (
           <>
             <div>
               <p className="text-white text-1rem">{user.email}</p>
@@ -113,12 +113,52 @@ const Header = () => {
               </svg>
             </button>
           </li>
-        )}
+        )} */}
+
+
+
+            <button
+              className="inline-flex items-center text-white  bg-yellow-500 hover:bg-yellow-600 hover:text-black space-y-[5px] border-0 py-2 px-5 focus:outline-none  rounded text-base mt-4 md:mt-0 mr-2">
+              Register
+              <svg
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                className="w-4 h-4 ml-1"
+                viewBox="0 0 24 24"
+              >
+                <path d="M5 12h14M12 5l7 7-7 7"></path>
+              </svg>
+            </button>
+
+
+
+
+            <button
+                className="inline-flex items-center text-white  bg-yellow-500 hover:bg-yellow-600 hover:text-black border-0 py-2 px-5 focus:outline-none rounded text-base mt-4 md:mt-0 mr-2">
+                LogIn
+                <svg
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  className="w-4 h-4 ml-1"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M5 12h14M12 5l7 7-7 7"></path>
+                </svg>
+              </button>
+
+
+
+
 
         <NavLink
           to={"/cart"}
-          className="inline-flex items-center bg-green-800 hover:bg-green-800 border-0 py-2 px-5 hover:text-black focus:outline-none text-white rounded text-base mt-4 md:mt-0"
-        >
+          className="inline-flex items-center bg-green-800 hover:bg-green-800 border-0 py-2 px-5 hover:text-black focus:outline-none text-white rounded text-base mt-4 md:mt-0">
           Cart
           <svg
             fill="none"
