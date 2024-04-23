@@ -7,7 +7,11 @@ const Cart = (cart) => {
     const navigate = useNavigate();
 
     const [total, setTotal] = useState(0);
+
     const carts = JSON.parse(localStorage.getItem('cart')) || []
+
+
+
 
     useEffect (() => {
     
@@ -19,6 +23,9 @@ const Cart = (cart) => {
 
     } , [carts])
     
+ 
+    //increment:
+
     const handleInc = (id) => {
         
 
@@ -40,6 +47,8 @@ const Cart = (cart) => {
 
     }
 
+
+     //decrement:
 
     const handleDec = (id) => {
 
@@ -70,6 +79,13 @@ const Cart = (cart) => {
 
     if(!carts?.length) <div>Cart is Empty</div>
   
+
+
+    const navigateToCheckOut = () => 
+    {
+      navigate("/check");
+     console.log(carts);
+    }
 
 
     return (
@@ -122,10 +138,7 @@ const Cart = (cart) => {
         }
 
         
-
-        
         <NavLink to={'/'}  className="flex font-semibold text-green-900 text-sm mt-10">
-      
           <svg  className="fill-current mr-2 text-green-900 w-4" viewBox="0 0 448 512"><path d="M134.059 296H436c6.627 0 12-5.373 12-12v-56c0-6.627-5.373-12-12-12H134.059v-46.059c0-21.382-25.851-32.09-40.971-16.971L7.029 239.029c-9.373 9.373-9.373 24.569 0 33.941l86.059 86.059c15.119 15.119 40.971 4.411 40.971-16.971V296z"/></svg>
           Continue Shopping
         </NavLink>
@@ -154,7 +167,7 @@ const Cart = (cart) => {
             <span>Total cost</span>
             <span>$  {(total + 10).toFixed(2)}</span>
           </div>
-          <button  className="bg-yellow-500 font-semibold hover:bg-yellow-600 py-3 text-sm text-white hover:text-black uppercase w-full">Checkout</button>
+          <button  className="bg-yellow-500 font-semibold hover:bg-yellow-600 py-3 text-sm text-white hover:text-black uppercase w-full" onClick={navigateToCheckOut}>Checkout</button>
         </div>
       </div>
 

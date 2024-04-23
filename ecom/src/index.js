@@ -4,24 +4,29 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter} from 'react-router-dom';
-import { Auth0Provider } from '@auth0/auth0-react';
+import { ToastContainer } from 'react-toastify';
+// import { Auth0Provider } from '@auth0/auth0-react';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
 
-   <Auth0Provider
-   domain="dev-nezvo4lzqbzis6au.us.auth0.com"
-   clientId="UENOAXIb6cxqoUuzPPRIbVo64LMfVWSG"
-   authorizationParams={{redirect_uri: window.location.origin}}
- >
  <BrowserRouter>
+
+ <ToastContainer/>
  
-    <App />
+ <App />
+   
  
  </BrowserRouter>
 
- </Auth0Provider>
+//  </Auth0Provider>
+
+//  <Auth0Provider
+//    domain="dev-nezvo4lzqbzis6au.us.auth0.com"
+//    clientId="UENOAXIb6cxqoUuzPPRIbVo64LMfVWSG"
+//    authorizationParams={{redirect_uri: window.location.origin}}
+//  >
 
 );
 

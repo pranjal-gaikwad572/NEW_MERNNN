@@ -1,0 +1,117 @@
+import * as React from 'react';
+import { useState, useEffect } from 'react';
+
+import Divider from '@mui/material/Divider';
+import Grid from '@mui/material/Grid';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemText from '@mui/material/ListItemText';
+import Stack from '@mui/material/Stack';
+import Typography from '@mui/material/Typography';
+
+
+
+const addresses = ['1 MUI Drive', 'Reactville', 'Anytown', '99999', 'USA'];
+
+
+const payments = [
+  { name: 'Card type:', detail: 'Visa' },
+  { name: 'Card holder:', detail: 'Mr. John Smith' },
+  { name: 'Card number:', detail: 'xxxx-xxxx-xxxx-1234' },
+  { name: 'Expiry date:', detail: '04/2024' },
+];
+
+export default function Review() 
+{
+
+
+  const [products, setProducts] = React.useState([]);
+
+
+
+const carts = JSON.parse(localStorage.getItem('cart')) || []
+
+
+React.useEffect(() => {
+  setProducts(carts)
+}, [])
+
+console.log(products);
+
+
+  return (
+    <Stack spacing={2}>
+      <List disablePadding>
+
+
+        {/* <ListItem sx={{ py: 1, px: 0 }}>
+          <ListItemText primary="Products" secondary="4 selected" />
+          <Typography variant="body2">$134.98</Typography>
+        </ListItem>
+        <ListItem sx={{ py: 1, px: 0 }}>
+          <ListItemText primary="Shipping" secondary="Plus taxes" />
+          <Typography variant="body2">$9.99</Typography>
+        </ListItem> */}
+
+
+        <ListItem sx={{ py: 1, px: 0 }}>
+          <ListItemText primary="Total" />
+          <Typography variant="subtitle1" sx={{ fontWeight: 700 }}>
+            $144.97
+          </Typography>
+        </ListItem>
+      </List>
+      <Divider />
+      <Stack
+        direction="column"
+        divider={<Divider flexItem />}
+        spacing={2}
+        sx={{ my: 2 }}
+      >
+        <div>
+          <Typography variant="subtitle2" gutterBottom>
+            Shipment details
+          </Typography>
+          <Typography gutterBottom>John Smith</Typography>
+          <Typography color="text.secondary" gutterBottom>
+            {addresses.join(', ')}
+          </Typography>
+        </div>
+        <div>
+          <Typography variant="subtitle2" gutterBottom>
+            Payment details
+          </Typography>
+          <Grid container>
+            {products.map((payment) => (
+              <React.Fragment key={payment.quantity
+              }>
+                <Stack
+                  direction="row"
+                  spacing={1}
+                  useFlexGap
+                  sx={{ width: '100%', mb: 1 }}
+                >
+                  {/* color = "text.secondary" */}
+
+                  <Typography variant="body1" >
+                  <img style ={{height:"40px"}} src={payment.image} />
+                  </Typography>
+
+                  <Typography variant="body2" >
+                    {payment.title}
+                  </Typography>
+
+                  <Typography variant="body3"> {payment.quantity}</Typography>
+
+                  <Typography variant="body3"> $ {payment.price}</Typography>
+
+
+                </Stack>
+              </React.Fragment>
+            ))}
+          </Grid>
+        </div>
+      </Stack>
+    </Stack>
+  );
+}

@@ -1,0 +1,153 @@
+.sign-up-page
+{
+    height: 80vh;
+    width: 100vw;
+    display: flex;
+}
+
+.signup-page-container
+{
+    margin-top: 3rem;
+    margin-bottom: 4rem;
+}
+
+.welcome-to-signup
+{
+    width: 40%;
+    height: 100%;
+    background-color: #edf1f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: rgba(50,50,93,0.25) 0px 13px 27px -5px,  rgba(0,0,0,0.3) 0px 8px 16px -8px;
+}
+
+.sign-up-form-div
+{
+    width: 60%;
+    height: 100%;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+
+    box-shadow: rgba(50,50,93,0.25) 0px 2px 5px -1px,  rgba(0,0,0,0.3) 0px 1px 3px -1px;
+}
+
+
+.welcome-to-signup-innerdiv
+{
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.signup-form-inner-div
+{
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.welcome-to-signup-innerdiv h2
+{
+    font-family: "Poppins";
+    font-size: 35px;
+    font-weight: bold;
+    text-align: center;
+ 
+}
+
+.welcome-to-signup-innerdiv p
+{
+    font-family: "Poppins";
+    font-size: 15px;
+    text-align: center;
+    width: 300px;
+    margin-top: 1.5rem;
+
+}
+
+
+.welcome-to-signup-innerdiv button
+{
+    font-family: "Poppins";
+    font-size: 14px;
+    padding: .8rem 3.5rem;
+    cursor: pointer;
+    border: 1px solid #18355e;
+    outline: none;
+    color: white;
+    background-color: #18355e;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 2rem;
+    border-radius: 20px;
+
+}
+
+.signup-form-inner-div
+{
+    font-family: "Poppins";
+    /* font-weight: bold; */
+    font-size: 20px;
+    /* font-size: 30px; */
+
+}
+
+.useEmail
+{
+    margin-top: 0.4rem;
+    color: #18355e;
+    font-weight: bold;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    margin-left: 0.7rem;
+}
+
+
+.inputsareasabox
+{
+    display: flex;
+    flex-direction: column;
+
+}
+
+.inputsareasabox input
+{
+    margin-top: 1rem;
+    border: 2px black solid;
+    border-radius: 2px;
+    width: 350px;
+    outline: none;
+    border: none;
+    background-color: rgb(223,235,235);
+    padding-left: 1rem;
+    height: 40px;
+}
+
+
+.firstNameInput 
+{
+    margin-top: 2rem;
+}
+
+
+.inputsareasabox button 
+{
+    font-family: "Poppins";
+    font-size: 14px;
+    padding: .8rem 3.5rem;
+    cursor: pointer;
+    border: 1px solid #18355e;
+    outline: none;
+    color: white;
+    background-color: #18355e;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 2rem;
+    border-radius: 20px;
+}
+
