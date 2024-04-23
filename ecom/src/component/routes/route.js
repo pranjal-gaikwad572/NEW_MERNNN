@@ -3,7 +3,7 @@ const User = require("../Server/User/UserSchema");
 
 //user create:
 
-const User = require("../Server/User/UserSchema");
+// const User = require("../Server/User/UserSchema");
 
 router.post("/register", async(req,res) => {
 try 
