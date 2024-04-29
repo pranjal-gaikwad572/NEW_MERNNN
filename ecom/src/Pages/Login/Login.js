@@ -1,12 +1,13 @@
 import React from "react"
 
-import SignUp from "../../component/SignUpComp/SignUp.js";
+
+import LogIn from "../../component/LogInComp/LogIn.js";
 
 const Login = () => {
   return (
    <>
- 
-   <SignUp/>
+
+   <LogIn/>
 
    </>
   )

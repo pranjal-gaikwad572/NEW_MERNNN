@@ -1,16 +1,16 @@
-const getAllData = async(req,res) => 
+const getAllData = async(request,response) => 
 {
 
-    res.status(200).json({msg: "I am getAllData"})
+    response.status(200).json({msg: "I am getAllData"})
 };
 
 
 //msg printing :
 
-const getAllLoginData = async(req,res) => 
+const getAllLoginData = async(request,response) => 
 {
 
-    res.status(200).json({msg: "I am getAllLoginData"})
+    response.status(200).json({msg: "I am getAllLoginData"})
 };
 
 

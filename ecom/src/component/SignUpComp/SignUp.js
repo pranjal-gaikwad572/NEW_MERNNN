@@ -118,9 +118,10 @@ const SignUp = () =>
 
             navigate('/login');
         }
-        else {
+        else 
+        {
             toast.error("Failed to create user. Please try again later");
-          }
+        }
 
     }
   }

@@ -7,9 +7,6 @@ import Footer from './component/Footer/Footer.jsx';
 import Contact from './component/Contact/Contact.jsx';
 import { Routes, Route }from 'react-router-dom';
 import Product from './modules/Product/Product.jsx';
-// import Card from './component/FeatureCard/Card.jsx';
-// import Prod from './modules/Products/Prod.jsx';
-// import ProductCard from './component/ProductCard/Products.jsx';
 import Categoryproducts from './modules/CategoryProducts/index.js';
 import Cart from './modules/Cart/Cart.jsx';
 import SignUp from './component/SignUpComp/SignUp.js';
@@ -23,14 +20,17 @@ function App() {
  
    <>
 
-   <Header/>
+<Header/>
  
 
    <Routes>
 
     <Route path="/" element={<Home/>} />
     <Route path="/login" element={<Login/>} />
+    <Route path="/SignUp" element={<SignUp/>} />
     <Route path="/products/:id" element={<Product/>} />
+    <Route path="/products" element={<Product/>} />
+    <Route path="/Footer" element={<Footer/>} />
     <Route path="/categories/:name" element={<Categoryproducts/>} />
     <Route path="/cart" element={<Cart/>} />
     <Route path="/check" element={<MainCheckOut/>} />
@@ -41,7 +41,7 @@ function App() {
    <Contact/>
    <Footer/>
    
-   </> 
+   </>
 
 );
 }

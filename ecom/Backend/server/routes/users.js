@@ -10,8 +10,6 @@ router.route("/data").get(getAllData);
 
 router.route("/login").get(getAllLoginData);
 
-
-
-
-
 module.exports = router;
+
+
