@@ -4,32 +4,26 @@ const app = express();
 
 const connectDB = require("./db/connect");
 
-
-
 const PORT = process.env.PORT || 8000;
 
-app.get("/", (request,response)  => {
-    res.send("Hii, I am Live");
-})
+app.get("/", (request, response) => {
+  res.send("Hii, I am Live");
+});
 
-
-const users_routes = require("./routes/users")
+const users_routes = require("./routes/users");
 
 //middleWare: to add routers:
-app.use("/api/users", users_routes)
+app.use("/api/users", users_routes);
 
-
-const start = async () => 
-{
-try 
-{
+const start = async () => {
+  try {
     await connectDB(process.env.MONGODB_URL);
 
-    app.listen(PORT, () =>
-{
-   console.log( `${PORT} Yes i am connected....!!`)
-});
-} catch (error) {
+    app.listen(PORT, () => {
+      console.log(`${PORT} Yes i am connected....!!`);
+    });
+  } catch (error) {
     console.log(error);
-}
-}
+  }
+};
+start();

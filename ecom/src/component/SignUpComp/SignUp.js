@@ -116,7 +116,7 @@ const SignUp = () =>
 
             });
 
-            navigate('/login');
+            navigate('/login'); 
         }
         else 
         {
