@@ -1,4 +1,5 @@
 require("dotenv").config();
+
 const express = require("express");
 const app = express();
 
@@ -7,7 +8,7 @@ const connectDB = require("./db/connect");
 const PORT = process.env.PORT || 8000;
 
 app.get("/", (request, response) => {
-  res.send("Hii, I am Live");
+  response.send("Hii, I am Live");
 });
 
 const users_routes = require("./routes/users");
@@ -26,4 +27,6 @@ const start = async () => {
     console.log(error);
   }
 };
+
+//function calling here
 start();

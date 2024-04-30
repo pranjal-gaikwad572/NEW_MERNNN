@@ -11,8 +11,13 @@ try {
     await  User.create(usersJson);
     console.log("Hiiii Guyss");
 } 
+
 catch (error) 
 {
     console.log(error);
 }
 }
+
+start();
+
+

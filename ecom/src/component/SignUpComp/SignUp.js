@@ -25,9 +25,10 @@ const SignUp = () =>
 
 
     let name, value;
+
+
     const handleChange = (event) =>
     {
-
         //name and value of the input field
         name = event.target.name;
         value = event.target.value;
@@ -37,6 +38,7 @@ const SignUp = () =>
         // nsures that the state is updated dynamically as the user types into the input fields.
         setSignUpState({...signupState, [name]: value});
     }
+
 
     const goToSignIn = () =>
     {
@@ -82,7 +84,7 @@ const SignUp = () =>
     {
         //http request serve by fetch function:
 
-        const result = await fetch("http://localhost:8000/",
+        const result = await fetch("http://localhost:4000/register",
         {
             // making a POST request to the specified URL.
             method: "POST",
@@ -103,6 +105,8 @@ const SignUp = () =>
 
         result = await result.json;
         localStorage.setItem("user", JSON.stringify(result));
+
+        const response = true;
 
         if(response)
         {
@@ -145,13 +149,13 @@ const SignUp = () =>
                 <h2>Create an Account</h2>
                 <p className="useEmail">Use Your Email to Registration</p>
                 <div className="inputsareasabox">
-                    <input type="text" placeholder="First Name" name='fname' autoComplete="off" className="firstNameInput" value={signupState.fname} onChange={handleChange} />
+                    <input type="text" placeholder="First Name" name='fname' autoComplete="on" className="firstNameInput" value={signupState.fname} onChange={handleChange} />
                     <br />
-                    <input type="text" placeholder="Last Name" name='lname' autoComplete="off" value={signupState.lname} onChange={handleChange} />
+                    <input type="text" placeholder="Last Name" name='lname' autoComplete="on" value={signupState.lname} onChange={handleChange} />
                     <br />
-                    <input type="email" placeholder="Email Address" name='email' autoComplete="off" value={signupState.email} onChange={handleChange} />
+                    <input type="email" placeholder="Email Address" name='email' autoComplete="on" value={signupState.email} onChange={handleChange} />
                     <br />
-                    <input type="password" placeholder="Enter Your Password" name='password' autoComplete="off" value={signupState.password} onChange={handleChange} />
+                    <input type="password" placeholder="Enter Your Password" name='password' autoComplete="on" value={signupState.password} onChange={handleChange} />
 
                     <button onClick={createUser}> Sign-Up </button>
  
