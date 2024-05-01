@@ -1,9 +1,10 @@
 
 const express = require("express");
 const router = express.Router();
-
-const pSchema = require('../model/AddProductSchema');
-const uSchema = require('../model/UserSchema');
+const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
+const Product = require('../model/AddProductSchema');
+const User = require('../model/UserSchema');
 
 //create a add product api:
 
@@ -38,6 +39,10 @@ router.post("/register", async(req,res) => {
     try {
         const {fname, lname, email, password} = req.body;
 
+
+        const hashedPassword = await bcrypt.hash(password, 10);
+
+
         if(!fname  || !lname || !email || !password)
         {
             return res.status(409).json({message:"Plz Fill the Data"});
@@ -50,6 +55,7 @@ router.post("/register", async(req,res) => {
             lname, 
             email, 
             password,
+            password : hashedPassword
         });
 
         await saveUserInDB.save();
@@ -63,6 +69,42 @@ router.post("/register", async(req,res) => {
     }
 })
 
+
+
+//Login API:
+
+router.post("/login", async(req,res) => 
+{
+    
+        const {email, password} = req.body;
+
+        //check whethet already exists or not:
+
+        const checkUser = await User.findOne({email});
+
+
+        if(!checkUser)
+        {
+            return res.json({message: "User ,Not Found"});
+
+        }
+
+        if(await bcrypt.compare(password, checkUser.password))
+        {
+            const token = jwt.sign({email : checkUser.email}, process.env.JWT_SECRET_KEY);
+
+            if (res.status(201))
+            {
+                return res.json({data:token})
+            }
+            
+            return res.json({message:"Invalid Details"})
+            
+        }
+
+        return res.json({message:"Invalid Password"});
+
+});
 
 
 

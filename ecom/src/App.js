@@ -12,21 +12,23 @@ import Cart from './modules/Cart/Cart.jsx';
 import SignUp from './component/SignUpComp/SignUp.js';
 import { ToastContainer, toast } from 'react-toastify';
 import MainCheckOut from './modules/Maincheckout/MainCheckOut.jsx';
-import Login from './Pages/Login/Login.js';
+import LogIn from './component/LogInComp/LogIn.js';
 
 
-function App() {
+function App() 
+{
+
+   const isLoggedIn = window.localStorage.getItem("isLoggedIn");
+
   return (
  
    <>
-
-<Header/>
  
-
+<Header/>
    <Routes>
 
-    <Route path="/" element={<Home/>} />
-    <Route path="/login" element={<Login/>} />
+    <Route path="/" element={isLoggedIn == "true" ? <Home/> : <LogIn/>} />
+    <Route path="/login" element={<LogIn/>} />
     <Route path="/SignUp" element={<SignUp/>} />
     <Route path="/products/:id" element={<Product/>} />
     <Route path="/products" element={<Product/>} />

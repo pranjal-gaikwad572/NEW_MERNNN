@@ -60,9 +60,9 @@ const SignUp = () =>
 
   const createUser = async (event) =>
   {
-      event.preventDefault();
+    //   event.preventDefault();
 
-      localStorage.setItem("user",JSON.stringify(signupState));
+    //   localStorage.setItem("user",JSON.stringify(signupState));
 
     const {fname, lname, email, password} = signupState;
 
@@ -84,7 +84,7 @@ const SignUp = () =>
     {
         //http request serve by fetch function:
 
-        const result = await fetch("http://localhost:4000/register",
+        const response = await fetch("http://localhost:4000/register",
         {
             // making a POST request to the specified URL.
             method: "POST",
@@ -103,10 +103,10 @@ const SignUp = () =>
             }),
         });
 
-        result = await result.json;
-        localStorage.setItem("user", JSON.stringify(result));
+        // result = await result.json;
+        // localStorage.setItem("user", JSON.stringify(result));
 
-        const response = true;
+        // const response = true;
 
         if(response)
         {

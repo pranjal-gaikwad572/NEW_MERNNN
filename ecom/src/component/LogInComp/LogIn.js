@@ -51,24 +51,29 @@ const LogIn = () =>
     };
 
 
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+    // window.localStorage.setItem("IsLoggedIn",isLoggedIn);
+    
+    window.localStorage.setItem("IsLoggedIn",true);
 
 
   const login = async (event) =>
   {
-      event.preventDefault();
+    //   event.preventDefault();
 
-      const loggeduser = JSON.parse(localStorage.getItem("user"));
+    //   const loggeduser = JSON.parse(localStorage.getItem("user"));
 
-     if(loginState.email === loggeduser.email && loginState.password === loggeduser.password)
-     {
-        localStorage.setItem("loggedIn", true)
-        navigate("/");
-     }
+    //  if(loginState.email === loggeduser.email && loginState.password === loggeduser.password)
+    //  {
+    //     localStorage.setItem("loggedIn", true)
+    //     navigate("/");
+    //  }
 
-     else
-     {
-        toast.error(" ohooo, Wrong email and password")
-     }
+    //  else
+    //  {
+    //     toast.error(" ohooo, Wrong email and password")
+    //  }
 
     const {email, password} = loginState;
 
@@ -85,6 +90,44 @@ const LogIn = () =>
     else if (password.length < 8)
     {
         toast.error("Atleast Enter 8 Characters!");
+    }
+    else
+    {
+        const response = await fetch("http://localhost:4000/login",
+        {
+            // making a POST request to the specified URL.
+            method: "POST",
+            headers:
+            {
+                //"Content-Type" header to "application/json", indicating that the request body will contain JSON data.
+                "Content-Type": "application/json",
+            },
+           
+            body: JSON.stringify
+            ({
+                email,
+                password,
+            }),
+        });
+
+        // result = await result.json;
+        // localStorage.setItem("user", JSON.stringify(result));
+
+        // const response = true;
+
+        const data = await response.json();
+
+        if(data)
+        {
+            toast.success("Login Successfully");
+            window.localStorage.setItem("token", data.data);
+            setIsLoggedIn(true);
+            console.log(data.data);
+            
+            navigate("/");
+        }
+
+        
     }
 
   }
