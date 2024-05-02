@@ -14,7 +14,7 @@ const ProductCard = ({ products = []}) => {
          products.map((product) => {
 
           console.log(product,'product')
-          const {id, title, price, description, category, image} = product;
+          const {id, title, price, category, image} = product;
 
           return (
 

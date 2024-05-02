@@ -46,6 +46,11 @@ const Header = () => {
 
   }
 
+  // 1.Sign In and signout for Blogging Application Project
+// 2. Storing data into the BAckend of blogging operation.
+//3. View orders and backend part in ecommerce website.
+
+
   return (
     <header className="text-gray-600 body-font shadow-lg">
       <div className="container mx-auto flex flex-wrap p-7 flex-col md:flex-row items-center">

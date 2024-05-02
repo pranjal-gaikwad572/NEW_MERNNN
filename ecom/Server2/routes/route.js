@@ -8,28 +8,28 @@ const User = require('../model/UserSchema');
 
 //create a add product api:
 
-router.post("/addproduct", async(req,res) => {
+// router.post("/addproduct", async(req,res) => {
     
-    try {
-        const {name,phone,description} = req.body;
+//     try {
+//         const {name,phone,description} = req.body;
 
-        if(!name  || !phone || !description)
-        {
-            return res.status(409).json({message:"Plz Fill the Data"});
-        }
+//         if(!name  || !phone || !description)
+//         {
+//             return res.status(409).json({message:"Plz Fill the Data"});
+//         }
 
-    const productData = new Product({name, phone, description});
-    //it returns a promise:
-    await productData.save();
+//     const productData = new Product({name, phone, description});
+//     //it returns a promise:
+//     await productData.save();
 
-    res.status(201).json({message: "Product added successfully"});
+//     res.status(201).json({message: "Product added successfully"});
 
-    } 
-    catch (err) 
-    {
-        res.status(409).json({message: "Product not added successfully"});
-    }
-})
+//     } 
+//     catch (err) 
+//     {
+//         res.status(409).json({message: "Product not added successfully"});
+//     }
+// })
 
 
 //registration api: user create

@@ -84,7 +84,7 @@ const SignUp = () =>
     {
         //http request serve by fetch function:
 
-        const response = await fetch("http://localhost:4000/register",
+        const response = await fetch("http://localhost:7000/register",
         {
             // making a POST request to the specified URL.
             method: "POST",
@@ -120,7 +120,7 @@ const SignUp = () =>
 
             });
 
-            navigate('/login'); 
+            // navigate('/login'); 
         }
         else 
         {

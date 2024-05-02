@@ -93,7 +93,7 @@ const LogIn = () =>
     }
     else
     {
-        const response = await fetch("http://localhost:4000/login",
+        const response = await fetch("http://localhost:7000/login",
         {
             // making a POST request to the specified URL.
             method: "POST",
@@ -124,7 +124,7 @@ const LogIn = () =>
             setIsLoggedIn(true);
             console.log(data.data);
             
-            navigate("/");
+        //    window.location.href="/";
         }
 
         
