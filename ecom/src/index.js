@@ -6,19 +6,29 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter} from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
+import { createBrowserRouter, RouterProvider, Route } from 'react-router-dom'; 
 
 
+
+
+
+// const router = createBrowserRouter([
+//     {
+//     path: '/',
+//     Element : <div>Helllo World</div>
+//     }
+// ]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
 
  <BrowserRouter>
 
- <ToastContainer/>
+//  <ToastContainer/>
  
  <App />
    
- 
+//  
  </BrowserRouter>
 
 
