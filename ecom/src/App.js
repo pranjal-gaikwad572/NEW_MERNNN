@@ -15,7 +15,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import MainCheckOut from './modules/Maincheckout/MainCheckOut.jsx';
 import LogIn from './component/LogInComp/LogIn.js';
 import Order from './Pages/orders/Order.js';
-
+import Logout from './Pages/Logout/Logout.jsx'
 
 
 function App() 
@@ -40,6 +40,7 @@ function App()
     <Route path="/categories/:name" element={<Categoryproducts/>} />
     <Route path="/cart" element={<Cart/>} />
     <Route path="/orders" element={<Order/>} />
+    <Route path="/logout" element={<Logout/>} />
 
 
 

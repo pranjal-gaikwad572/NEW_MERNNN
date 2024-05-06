@@ -5,6 +5,7 @@ import { useState } from "react";
 import { ToastContainer, toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
+import { useAuth } from "../../store/auth";
 
 
 const LogIn = () =>
@@ -19,21 +20,21 @@ const LogIn = () =>
         password :""
     })
 
+    const {storetokenInLS} = useAuth();
 
-    let name, value;
     const handleChange = (event) =>
     {
 
 
         //name and value of the input field
-        name = event.target.name;
-        value = event.target.value;
+       let name = event.target.name;
+       let value = event.target.value;
 
         //update with  the properties with new value:
         // spread the current state using the spread operator (...signupState)
         // nsures that the state is updated dynamically as the user types into the input fields.
         setLoginState({...loginState, [name]: value});
-    }
+    };
 
 
     const goToSignUp = () =>
@@ -41,96 +42,70 @@ const LogIn = () =>
         navigate("/signup")
     }
 
-    const validateEmail = (input) =>
-    {
-       
-    const emailRegex = /^[A-Z0-9._%+-]+ @[A-Z0-9.-]+\.[A-Z]{2,}$/i;
-   
-    return emailRegex.test(input);
-
-    };
+ 
 
 
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    // const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-    // window.localStorage.setItem("IsLoggedIn",isLoggedIn);
+    // // window.localStorage.setItem("IsLoggedIn",isLoggedIn);
     
-    window.localStorage.setItem("IsLoggedIn",true);
+    // window.localStorage.setItem("IsLoggedIn",true);
 
 
   const login = async (event) =>
-  {
-    //   event.preventDefault();
+{
 
-    //   const loggeduser = JSON.parse(localStorage.getItem("user"));
+    event.preventDefault();
 
-    //  if(loginState.email === loggeduser.email && loginState.password === loggeduser.password)
-    //  {
-    //     localStorage.setItem("loggedIn", true)
-    //     navigate("/");
-    //  }
-
-    //  else
-    //  {
-    //     toast.error(" ohooo, Wrong email and password")
-    //  }
-
-    const {email, password} = loginState;
-
-    // navigate('/');
-
-    if(!email || !password)
-    {
-        toast.error("plz fill out all the fields");
-    }
-    // else if (!validateEmail(email))
-    // {
-    //     toast.error("Invalid Email Address");
-    // }
-    else if (password.length < 8)
-    {
-        toast.error("Atleast Enter 8 Characters!");
-    }
-    else
-    {
-        const response = await fetch("http://localhost:7000/login",
-        {
-            // making a POST request to the specified URL.
+    try {
+        
+        const response = await fetch('http://localhost:7000/api/auth/login',{
             method: "POST",
-            headers:
-            {
-                //"Content-Type" header to "application/json", indicating that the request body will contain JSON data.
-                "Content-Type": "application/json",
+            headers: {
+              //"Content-Type" header to "application/json", indicating that the request body will contain JSON data.
+              "Content-Type": "application/json",
             },
-           
-            body: JSON.stringify
-            ({
-                email,
-                password,
-            }),
+
+            body: JSON.stringify(loginState),
+    
         });
 
-        // result = await result.json;
-        // localStorage.setItem("user", JSON.stringify(result));
+        console.log("login form", response);
 
-        // const response = true;
 
-        const data = await response.json();
+        if(response.ok)
+            {
 
-        if(data)
-        {
-            toast.success("Login Successfully");
-            window.localStorage.setItem("token", data.data);
-            setIsLoggedIn(true);
-            console.log(data.data);
-            
-        //    window.location.href="/";
-        }
 
-        
+           const res_data = await response.json();
+
+           console.log("response from the server", res_data);
+
+           storetokenInLS(res_data.token);
+
+
+                toast.success("Login Successfully");
+                setLoginState({email: "", password:""});
+                navigate("/");
+            }
+
+            else
+            {
+                toast.error("Invalid Credentials");
+                console.log("Invalid Credentials");
+            }
+
+    } catch (error) {
+        console.log(error)
     }
 
-  }
+    
+
+    
+        
+}
+
+  
 
   
 

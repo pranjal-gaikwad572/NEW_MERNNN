@@ -7,6 +7,7 @@ import reportWebVitals from './reportWebVitals';
 import {BrowserRouter} from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import { createBrowserRouter, RouterProvider, Route } from 'react-router-dom'; 
+import { AuthProvider } from './store/auth';
 
 
 
@@ -22,15 +23,16 @@ import { createBrowserRouter, RouterProvider, Route } from 'react-router-dom';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
 
- <BrowserRouter>
+ <AuthProvider>
+<BrowserRouter>
 
-//  <ToastContainer/>
+<ToastContainer/>
  
  <App />
    
-//  
  </BrowserRouter>
 
+ </AuthProvider>
 
 );
 
