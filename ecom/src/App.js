@@ -11,17 +11,13 @@ import Product from './modules/Product/Product.jsx';
 import Categoryproducts from './modules/CategoryProducts/index.js';
 import Cart from './modules/Cart/Cart.jsx';
 import SignUp from './component/SignUpComp/SignUp.js';
-import { ToastContainer, toast } from 'react-toastify';
-import MainCheckOut from './modules/Maincheckout/MainCheckOut.jsx';
 import LogIn from './component/LogInComp/LogIn.js';
 import Order from './Pages/orders/Order.js';
-import Logout from './Pages/Logout/Logout.jsx'
+import { Logout } from './component/LogOut/Logout.jsx';
 
 
 function App() 
 {
-
-   const isLoggedIn = window.localStorage.getItem("isLoggedIn");
 
   return (
  
@@ -41,9 +37,7 @@ function App()
     <Route path="/cart" element={<Cart/>} />
     <Route path="/orders" element={<Order/>} />
     <Route path="/logout" element={<Logout/>} />
-
-
-
+ 
 
    </Routes>
    <Contact/>
@@ -53,5 +47,6 @@ function App()
 
 );
 }
+
 
 export default App;

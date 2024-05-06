@@ -29,7 +29,6 @@ app.use("/api/auth", router);
 //on the console it will show this:
 const PORT = 7000;
 
-
 connectDb().then(() => {
     app.listen(PORT, () => 
         {

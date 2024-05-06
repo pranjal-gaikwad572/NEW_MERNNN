@@ -3,6 +3,7 @@ import { NavLink} from "react-router-dom";
 // import {NavDropdown} from 'react-bootstrap'
 import { useAuth } from "../../store/auth";
 
+
 const navigations = [
   {
     name: "Home",
@@ -23,8 +24,8 @@ const navigations = [
   },
   {
     name: "Logout",
-    path:"/logout",
-  }
+    path: "/logout",
+  },
 
 
 ];
@@ -35,6 +36,8 @@ const Header = () => {
   
 
   const {isLoggedIn} = useAuth();
+
+
 
  
   // 1.Sign In and signout for Blogging Application Project
@@ -84,7 +87,25 @@ const Header = () => {
         </nav>
 
 
+        {
+          isLoggedIn ?  
+          
+          <div>
+          <NavLink
+          to={'/logout'}
+           className="inline-flex text-white bg-[#18355e]
+          border-0 py-2 px-6 focus:outline-none mr-2 hover:bg-[#18355e]
+          rounded text-lg">Logout
+          </NavLink>  
+          <NavLink
+          to={"/cart"}
+          className="inline-flex text-white bg-[#18355e]
+          border-0 py-2 px-6 focus:outline-none hover:bg-[#18355e]
+          rounded text-lg"> Cart
+        </NavLink> </div>
+         :
 
+          <div>
 
         <NavLink
         to={"/SignUp"}
@@ -92,10 +113,6 @@ const Header = () => {
         border-0 py-2 px-6 focus:outline-none mr-2 hover:bg-[#18355e]
         rounded text-lg"> Register
         </NavLink>
-
-
-
-
         <NavLink
         to={"/LogIn"}
         className="inline-flex text-white bg-[#18355e]
@@ -103,24 +120,11 @@ const Header = () => {
         rounded text-lg"> Login
         </NavLink>
 
+          </div>
+        }
 
 
-        <NavLink
-        to={"/SignUp"}
-         className="inline-flex text-white bg-[#18355e]
-        border-0 py-2 px-6 focus:outline-none mr-2 hover:bg-[#18355e]
-        rounded text-lg"> LogOut
-        </NavLink>
-
-
-
-
-        <NavLink
-          to={"/cart"}
-          className="inline-flex text-white bg-[#18355e]
-          border-0 py-2 px-6 focus:outline-none hover:bg-[#18355e]
-          rounded text-lg"> Cart
-        </NavLink>
+        
 
 
 
