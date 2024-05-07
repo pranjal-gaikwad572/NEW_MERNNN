@@ -14,7 +14,7 @@ const [products, setProducts] = useState();
  useEffect(() => {
   
   const fetchProducts = async () => {
-    const response = await fetch('https://fakestoreapi.com/products');
+    const response = await fetch('http://localhost:7000/api/data/product');
     const data = await response.json();
     console.log(data)
     setProducts(data)
@@ -34,9 +34,9 @@ const [products, setProducts] = useState();
 
  
     {
-      products?.length > 0 ?
+      products?.products?.length > 0 ?
 
-      <ProductCard products={products}/>
+      <ProductCard products={products.products}/>
       :
       <div>Loading.....</div>
     }

@@ -2,9 +2,12 @@ import React, { useState } from "react";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+// import axios from "axios";
 
-const Product = () => {
+
+const Product = ({cart}) => {
+
+  
   //useparam = hook => to accept parameters from route
   //common pattern for accessing route
   const { id } = useParams();
@@ -19,10 +22,11 @@ const Product = () => {
   //for getting single product :
   useEffect(() => {
     const fetchProduct = async () => {
-      const response = await fetch(`https://fakestoreapi.com/products/${id}`);
+      // const response = await fetch(`https://fakestoreapi.com/products/${id}`);
+      const response = await fetch(`http://localhost:7000/api/data/product/${id}`);
       const data = await response.json(); //fetched data to the json
-      console.log(data);
-      setProduct(data); //update so anywhere we can use it
+      console.log(data.product[0]);
+      setProduct(data.product[0]); //update so anywhere we can use it
     };
 
     fetchProduct();
@@ -48,50 +52,42 @@ const Product = () => {
       });
       localStorage.setItem("cart", JSON.stringify(updatedCart));
     } else {
-      localStorage.setItem(
-        "cart",
-        JSON.stringify([...cart, { ...product, quantity: 1 }])
+      localStorage.setItem("cart",JSON.stringify([...cart, { ...product, quantity: 1 }])
       );
     }
 
     alert("Product added to the cart");
+   
 
     if (redirect) {
       navigate("/cart");
     }
+
+    
   };
 
+  const handleAddToCart = async (productId) => {
+  
+    const userId = localStorage.getItem('user');
 
+    console.log(product, userId);
+    
+    try {
+   
+      const response = await fetch(`http://localhost:7000/api/auth/add-to-cart`,{
 
-  const  handleAddToCart= (productId) =>
-  {
-         const product_Id = productId;
-         const user_Id = localStorage.getItem('user');
+        method:"POST",
+        headers:{
+          "Content-Type": "application/json",
+        },
+        body:JSON.stringify({productId:productId , userId})
+      });
 
-         console.log({product_Id: product_Id,user_Id});
-       
-
-          const data = {product_Id: product_Id,user_Id};
-        
-             axios.post('http://localhost:7000/api/auth/add-to-cart', data)
-      
-        .then(res =>
-          {
-            console.log(res.data)
-            if(res.data.code == 200)
-              {
-                setRefresh(!refresh)
-              }
-          }
-        )
-        .catch(err =>
-          {
-           console.log(err); 
-          }
-        )
-
-      
-     }
+      console.log(response);
+    } catch (error) {
+      console.log({error: error.message})
+    }
+  }
 
   
 
@@ -144,7 +140,7 @@ const Product = () => {
 
                 <button  className="flex ml-auto border-0 py-2 px-6 focus:outline-none text-white 
                  bg-yellow-500 hover:bg-yellow-600 hover:text-black rounded mr-2" 
-                onClick={() => handleAddToCart(product.id)}>Buy it Now
+                onClick={() => handleAddToCart(product._id)}>Buy it Now
                 </button>
 
 

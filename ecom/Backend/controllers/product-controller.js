@@ -6,7 +6,8 @@ const products = async (req,res) =>
     {
        try {
       
-        const response = await Product.find();
+        const response = await Product.find({});
+        // console.log(response);
 
         if(!response)
             {
@@ -14,7 +15,30 @@ const products = async (req,res) =>
 
                 return;
             }
-        res.status(200).json({msg: response});
+        res.status(200).json({products: response});
+
+        // res.status(200).json({response});
+
+        
+       } catch (error) {
+        console.log(`products: ${error}`)
+       }
+    }
+const findproductsById = async (req,res) =>
+    {
+       try {
+        const {id} = req.params;
+        const response = await Product.find({_id :  id});
+
+        console.log(response);
+
+        if(!response)
+            {
+                res.status(404).json({msg: "No product Found"});
+
+                return;
+            }
+        res.status(200).json({product: response});
 
         
        } catch (error) {
@@ -22,4 +46,4 @@ const products = async (req,res) =>
        }
     }
 
-    module.exports = {products};
+    module.exports = {products ,findproductsById};

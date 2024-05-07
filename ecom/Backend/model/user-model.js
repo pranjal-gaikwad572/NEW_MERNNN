@@ -27,12 +27,14 @@ const userSchema = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
-  cart: [
-    {
-      type:mongoose.Schema.Types.ObjectId, 
-      ref: 'Product'
+  
+  cart:[{
+    productId:{ type :mongoose.Schema.Types.ObjectId , ref : "Product"},
+    quantity: {
+      type: Number,
+      default: 1,
     }
-  ]
+  }  ],
 });
 
 //jwt:
@@ -89,9 +91,6 @@ try {
 }
 
 }
-
-
-
 
 
 

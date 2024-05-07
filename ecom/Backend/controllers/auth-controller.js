@@ -129,33 +129,54 @@ const user =  async(req,res) =>
     }
 
 
-const addToCart = async(req,res) =>
-    {
-        console.log(req.body);  
-        
-        
-        const isupdate = user-model.updateOne({_id: req.body.user_Id},
-        {
-        $addToSet: {cart: req.body.product_Id},
+    const addToCart = async (req, res) => {
+        try {
+          const { productId, userId } = req.body;
+      console.log(req.body)
+          // Find the user's cart
+          const user = await User.findOne({ _id : userId });
+          if (!user) {
+            return res.status(404).json({ msg: "User not found" });
+          }
+      
+          // Check if the product is already in the cart
+          const isProductInCart = user.cart.find((item) => item.id === productId);
+          console.log(isProductInCart)
+          if (isProductInCart) {
+            user.cart.push(productId);
+            return res.status(200).json({ msg: "Product added" });
+          }
+      
+          // Add the product to the cart
+          user.cart.push({productId : productId});
+          await user.save();
+      
+          return res.status(200).json({ msg: "Product added to cart successfully" });
+        } catch (error) {
+          console.log(error);
+          return res.status(500).json({ msg: "Server Error" });
         }
-    )
-
-        if(isupdate)
-            {
-                return res.send({ code: 200, message: 'Add to cart successfully'})
-            }
-            else
-            {
-
-                return RTCDTMFSender.send({code: 500, message:'Server Error'})
-
-            }
-
-        // return res.send('add');
-
-     }
+      };
 
 
+   
+
+
+// const getCart = async (req,res) =>
+//     {
+//         const userId = req.body.user_Id;
+
+//         const data = await user-model.findOne({_id:userId});
+
+//         if(data) 
+//             {
+//                 return res.send({code: 200, message:'Get cart success', data:data});
+//             }
+//             else
+//             {
+//                 return res.send({code: 500, message:'Server Error'});
+//             }
+//     }
 
 
 

@@ -18,5 +18,7 @@ router.route("/user").get(authMiddleware ,authcontrollers.user);
 
 router.route("/add-to-cart").post(authcontrollers.addToCart);
 
+// router.route("/getcart").post(authcontrollers.getCart);
+
 
 module.exports = router;

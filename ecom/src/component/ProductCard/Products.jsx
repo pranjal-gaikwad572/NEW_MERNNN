@@ -14,12 +14,12 @@ const ProductCard = ({ products = []}) => {
          products.map((product) => {
 
           console.log(product,'product')
-          const {id, title, price, category, image} = product;
+          const {_id, title, price, category, image} = product;
 
           return (
 
             
-            <NavLink  to={`/products/${id}`} className="lg:w-1/4 md:w-1/2 p-4 w-full border border-black pb-1">
+            <NavLink  to={`/products/${_id}`} className="lg:w-1/4 md:w-1/2 p-4 w-full border border-black pb-1">
         <a  className="block relative h-48 rounded overflow-hidden">
           <img alt={title}  className="object-contain object-center w-full h-full block" src={image}/>
         </a>

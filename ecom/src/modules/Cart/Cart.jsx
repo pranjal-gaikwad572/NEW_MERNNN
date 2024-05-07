@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { NavLink, useNavigate } from 'react-router-dom'
 import { useState } from 'react';
+import {loadStripe} from '@stripe/stripe-js';
 
 const Cart = (cart) => {
   
@@ -9,7 +10,8 @@ const Cart = (cart) => {
     const [total, setTotal] = useState(0);
 
     const carts = JSON.parse(localStorage.getItem('cart')) || []
-
+    
+    console.log(carts);
 
 
 
@@ -80,12 +82,50 @@ const Cart = (cart) => {
     if(!carts?.length) <div>Cart is Empty</div>
   
 
+//onclick on checkout:
 
-    const navigateToCheckOut = () => 
-    {
-      navigate("/check");
-     console.log(carts);
-    }
+    // const navigateToCheckOut = () => 
+    // {
+    //   navigate("/check");
+    //  console.log(carts);
+    // }
+
+
+
+    //payment integration:
+
+    const makePayment = async() =>
+      {
+        const stripe = await loadStripe("pk_live_51PDl7ySBlWzCVuTdFbTSlA4KX4xI2Yyrd9v5tMHZCxPI6lF6PmTgv6s6HU32pLK02g7YUeaJpNFV8uC3cFseDbrW00RfswtG0I");
+
+        const body = {
+
+          products : carts
+        }
+
+        const headers = 
+        {
+          "Content-Type" : "application/json"
+        }
+
+        const response = await fetch("http://localhost:7000/api/create-checkout-session", 
+        {
+
+           method: "POST",
+           headers: headers,
+           body:JSON.stringify(body)
+
+
+        });
+
+
+
+        const session = await response.json();
+
+        const result = stripe.redirectToCheckout()
+        
+
+      }
 
 
     return (
@@ -105,7 +145,8 @@ const Cart = (cart) => {
         </div>
 
         {
-            carts?.map((cart) => {
+            carts?.map((cart) => 
+              {
                 return(
 
     <div  className="flex items-center hover:bg-gray-100 -mx-8 px-6 py-5">
@@ -167,7 +208,7 @@ const Cart = (cart) => {
             <span>Total cost</span>
             <span>$  {(total + 10).toFixed(2)}</span>
           </div>
-          <button  className="bg-yellow-500 font-semibold hover:bg-yellow-600 py-3 text-sm text-white hover:text-black uppercase w-full" onClick={navigateToCheckOut}>Checkout</button>
+          <button  className="bg-yellow-500 font-semibold hover:bg-yellow-600 py-3 text-sm text-white hover:text-black uppercase w-full" onClick={makePayment}>Checkout</button>
         </div>
       </div>
 

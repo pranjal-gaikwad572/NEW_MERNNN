@@ -10,7 +10,7 @@ const Categoryproducts = () => {
     useEffect(() => {
 
         const fetchProducts = async () => {
-            const response = await fetch(`https://fakestoreapi.com/products/category/${name}`);
+            const response = await fetch(`http://localhost:7000/api/auth/product`);
             const data = await response.json();
             console.log(data)
             setProducts(data)
