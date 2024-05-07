@@ -6,8 +6,6 @@ const connectDb = require("./utils/db")
 const cors = require('cors');
 
 
-
-
 const corsOptions ={
     origin: "http://localhost:3000",
     methods: "GET,POST,PUT,DELETE,PATCH,HEAD",
@@ -22,6 +20,14 @@ app.use(express.json());
 //requiring the router:
 const router = require('./route/auth-router');
 app.use("/api/auth", router);
+
+//product route:
+
+const productRoute = require('./route/product-router');
+app.use("/api/data",productRoute);
+
+// const addToCartRoute = require
+
 
 //middleware:
 

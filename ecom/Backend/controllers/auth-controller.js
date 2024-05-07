@@ -1,3 +1,4 @@
+const { model } = require('mongoose');
 const User = require('../model/user-model')
 const bcrypyt = require("bcryptjs");
 
@@ -128,8 +129,34 @@ const user =  async(req,res) =>
     }
 
 
+const addToCart = async(req,res) =>
+    {
+        console.log(req.body);  
+        
+        
+        const isupdate = user-model.updateOne({_id: req.body.user_Id},
+        {
+        $addToSet: {cart: req.body.product_Id},
+        }
+    )
+
+        if(isupdate)
+            {
+                return res.send({ code: 200, message: 'Add to cart successfully'})
+            }
+            else
+            {
+
+                return RTCDTMFSender.send({code: 500, message:'Server Error'})
+
+            }
+
+        // return res.send('add');
+
+     }
 
 
 
 
-module.exports = {home, register, login, user};
+
+module.exports = {home, register, login, user, addToCart};

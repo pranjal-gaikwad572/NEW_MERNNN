@@ -11,13 +11,12 @@ const authMiddleware = require("../middlewares/auth-Middleware");
 
 router.route("/").get(authcontrollers.home);
 
-router
-.route("/register").post(authcontrollers.register);
-
-
+router.route("/register").post(authcontrollers.register);
 router.route("/login").post(authcontrollers.login);
 
 router.route("/user").get(authMiddleware ,authcontrollers.user);
+
+router.route("/add-to-cart").post(authcontrollers.addToCart);
 
 
 module.exports = router;

@@ -21,6 +21,8 @@ const LogIn = () =>
     })
 
     const {storetokenInLS} = useAuth();
+    const {storeuserInLS} = useAuth();
+
 
     const handleChange = (event) =>
     {
@@ -82,6 +84,7 @@ const LogIn = () =>
            console.log("response from the server", res_data);
 
            storetokenInLS(res_data.token);
+           storeuserInLS(res_data.userId);
 
 
                 toast.success("Login Successfully");
